@@ -62,7 +62,7 @@ Meu foco hoje é Python e SQL, modelagem e qualidade de dados, e **IA aplicada**
 
 <div align="center">
 
-<img height="160" src="https://github-readme-stats.vercel.app/api?username=Georgebecker&show_icons=true&include_all_commits=true&rank_icon=github&hide_border=true&theme=tokyonight&locale=pt-br" alt="Estatísticas do GitHub">
+<img height="160" src="https://github-readme-stats.vercel.app/api?username=Georgebecker&show_icons=true&rank_icon=github&hide_border=true&theme=tokyonight&locale=pt-br" alt="Estatísticas do GitHub">
 <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Georgebecker&layout=compact&langs_count=8&hide_border=true&theme=tokyonight" alt="Linguagens mais usadas">
 
 <img height="170" src="https://streak-stats.demolab.com/?user=Georgebecker&hide_border=true&locale=pt_BR&theme=tokyonight" alt="Sequência de contribuições">
