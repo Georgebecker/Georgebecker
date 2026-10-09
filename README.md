@@ -52,32 +52,9 @@ Meu foco hoje é Python e SQL, modelagem e qualidade de dados, e **IA aplicada**
 
 <div align="center">
 
-**Linguagens e dados**
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)
-![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=flat)
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
-![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat&logo=sqlite&logoColor=white)
-
-**IA aplicada**
-
-![DeepSeek](https://img.shields.io/badge/DeepSeek-4D6BFE?style=flat&logo=deepseek&logoColor=white)
-![Google Gemini](https://img.shields.io/badge/Google%20Gemini-8E75B2?style=flat&logo=googlegemini&logoColor=white)
-![Ollama](https://img.shields.io/badge/Ollama-000000?style=flat&logo=ollama&logoColor=white)
-
-**Ferramentas e práticas**
-
-![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)
-![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white)
-![WordPress](https://img.shields.io/badge/WordPress-21759B?style=flat&logo=wordpress&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat)
-![Documentação](https://img.shields.io/badge/Documenta%C3%A7%C3%A3o%20viva-1a1b27?style=flat)
-![Testes](https://img.shields.io/badge/Testes%20e%20medi%C3%A7%C3%A3o-1a1b27?style=flat)
+| **Linguagens e dados** | **IA aplicada** | **Ferramentas e práticas** |
+|:---:|:---:|:---:|
+| ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) <br> ![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat) <br> ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white) <br> ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white) <br> ![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=flat) <br> ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white) <br> ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white) <br> ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat&logo=sqlite&logoColor=white) | ![DeepSeek](https://img.shields.io/badge/DeepSeek-4D6BFE?style=flat&logo=deepseek&logoColor=white) <br> ![Google Gemini](https://img.shields.io/badge/Google%20Gemini-8E75B2?style=flat&logo=googlegemini&logoColor=white) <br> ![Ollama](https://img.shields.io/badge/Ollama-000000?style=flat&logo=ollama&logoColor=white) | ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white) <br> ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white) <br> ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white) <br> ![WordPress](https://img.shields.io/badge/WordPress-21759B?style=flat&logo=wordpress&logoColor=white) <br> ![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat) <br> ![Documentação](https://img.shields.io/badge/Documenta%C3%A7%C3%A3o%20viva-1a1b27?style=flat) <br> ![Testes](https://img.shields.io/badge/Testes%20e%20medi%C3%A7%C3%A3o-1a1b27?style=flat) |
 
 </div>
 
