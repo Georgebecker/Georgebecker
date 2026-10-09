@@ -75,11 +75,13 @@ Meu foco hoje é Python e SQL, modelagem e qualidade de dados, e **IA aplicada**
 
 <div align="center">
 
-<img src="https://trophy.ryglcloud.net/?username=Georgebecker&theme=tokyonight&no-frame=true&no-bg=true&column=-1&margin-w=8&margin-h=8" alt="Troféus do perfil">
+[![Troféus do perfil](https://trophy.ryglcloud.net/?username=Georgebecker&theme=radical&no-frame=true&no-bg=true&column=7&margin-w=10&margin-h=10)](https://github.com/ryo-ma/github-profile-trophy)
 
 ![Visitantes](https://komarev.com/ghpvc/?username=Georgebecker&label=Visitantes&color=7aa2f7&style=flat)
 
 </div>
+
+---
 
 ## 🚀 Projetos em destaque
 
