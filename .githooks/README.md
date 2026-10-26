@@ -1,12 +1,17 @@
 # Ganchos de proteção do git — segurança máxima
 
-Dois ganchos em `sh` que impedem segredo de entrar no repositório:
+Três ganchos em `sh` que impedem segredo de entrar no repositório e impedem que
+um modelo de IA apareça como autor:
 
 - `pre-commit` — roda **no commit**. Recusa o commit quando algum arquivo de segredo
   (`.env` ou variante) entra na lista, ou quando uma linha adicionada contém valor com
   cara de chave. Funciona inclusive com `git add -f`.
+- `commit-msg` — roda **na mensagem**. Recusa o commit quando a mensagem traz
+  `Co-authored-by:` apontando para Copilot, Claude, GPT, Gemini, DeepSeek, Cursor ou
+  conta bot, além de rodapés `Assisted-by:` e `Generated with <modelo>`.
 - `pre-push` — roda **no envio ao remoto**. É a segunda barreira: reanalisa os commits
-  da fila e recusa o `push` mesmo que o commit tenha passado com `--no-verify`.
+  da fila (segredo, chave **e** coautoria de IA) e recusa o `push` mesmo que o commit
+  tenha passado com `--no-verify`.
 
 O único arquivo `.env*` permitido é o `.env.example` (modelo, sem valores).
 
@@ -25,6 +30,24 @@ O único arquivo `.env*` permitido é o `.env.example` (modelo, sem valores).
 
 O valor da chave não mora em arquivo: mora na **variável de ambiente do usuário** do
 Windows. Use `segredos.ps1 -Definir NOME_DA_CHAVE`.
+
+## Autoria sempre humana
+
+O `commit-msg` recusa a mensagem que credita um modelo de IA como coautor. O motivo é
+prático: o GitHub monta a lista de contribuidores a partir de autoria e coautoria, e um
+trailer `Co-authored-by:` apontando para Copilot, Claude ou GPT transforma a ferramenta
+em contribuidora do projeto. Aqui a lista é de **pessoas**.
+
+Teste rápido (a mensagem com trailer precisa ser recusada):
+
+```powershell
+$msg = "teste`n`nCo-authored-by: Copilot <copilot@github.com>"
+$msg | Out-File "$env:TEMP\msg.txt" -Encoding utf8
+& "C:\Program Files\Git\bin\bash.exe" -c "./.githooks/commit-msg '$env:TEMP\msg.txt'"
+```
+
+Para o trailer não ser gerado na origem, mantenha no VS Code `git.addAICoAuthor` em
+`"off"`.
 
 ## Instalação
 
@@ -52,12 +75,12 @@ git add -f .env ; git commit -m "teste"     # o gancho recusa
 git reset ; Remove-Item .env
 ```
 
-## Por que duas barreiras
+## Por que três barreiras
 
-Um commit pode ser criado com `--no-verify` (pulando o `pre-commit`). O `pre-push`
-examina os commits que estão sendo enviados e recusa o envio — então o segredo não
-chega ao GitHub nem nesse caso. Depois de removê-lo, ainda é preciso **revogar a chave
-na origem**: histórico reescrito não desfaz um vazamento.
+Um commit pode ser criado com `--no-verify` (pulando o `pre-commit` e o `commit-msg`).
+O `pre-push` examina os commits que estão sendo enviados e recusa o envio — então nem o
+segredo nem a coautoria de IA chegam ao GitHub. Depois de remover um segredo, ainda é
+preciso **revogar a chave na origem**: histórico reescrito não desfaz um vazamento.
 
 ## Falso positivo
 

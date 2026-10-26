@@ -4,8 +4,9 @@
 #
 # SEGUNDA barreira, depois do pre-commit: recusa o ENVIO ao remoto
 # quando algum commit da fila contem arquivo de segredo (.env ou
-# variante) OU linha com valor de chave (DeepSeek/OpenAI, Google,
-# Hugging Face, GitHub, AWS, chave privada).
+# variante), linha com valor de chave (DeepSeek/OpenAI, Google,
+# Hugging Face, GitHub, AWS, chave privada) ou mensagem que credita
+# um modelo de IA como coautor.
 #
 # Pega ate o commit criado com --no-verify, que burlou a primeira barreira.
 # A mensagem mostra apenas o commmit e o NOME DO ARQUIVO — nunca o valor.
@@ -15,6 +16,7 @@
 
 PADRAO='sk-[A-Za-z0-9]{24,}|sk-proj-[A-Za-z0-9_-]{20,}|AIza[0-9A-Za-z_-]{33,}|hf_[A-Za-z0-9]{30,}|ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|(DEEPSEEK|OPENAI|ANTHROPIC|GOOGLE|GEMINI|HUGGINGFACE|HF|PEXELS|SERPAPI|STRIPE)[A-Z0-9_]*(API_?KEY|TOKEN|SECRET|PASSWORD)[A-Z0-9_]*[ \t]*[:=][^A-Za-z0-9]{0,3}[A-Za-z0-9_-]{16,}'
 EXCECOES='example|exemplo|placeholder|sua_chave|sua-chave|changeme|seu_token|xxx'
+MODELOS='copilot|chatgpt|openai|anthropic|claude|gemini|bard|deepseek|cursor|codex|windsurf|aider|devin|ollama|mistral|qwen|llama|\[bot\]|github-actions'
 
 while read -r local_ref local_sha remote_ref remote_sha
 do
@@ -71,6 +73,24 @@ do
             echo "REGRA DE OURO: nenhum arquivo guarda valor de chave." >&2
             echo "Mova o valor para a variavel de ambiente do usuario (segredos.ps1 -Definir NOME)," >&2
             echo "reescreva o historico do commit e REVOQUE a chave na origem." >&2
+            echo "" >&2
+            exit 1
+        fi
+
+        # ---- barreira 3: coautoria de IA na mensagem ----
+        coautor=$(git show -s --format=%B "$commit" 2>/dev/null \
+            | grep -vE '^[[:space:]]*#' \
+            | grep -inE "^[[:space:]]*(co-authored-by|assisted-by|generated-by)[[:space:]]*:.*($MODELOS)|generated with[[:space:]]+($MODELOS|ai|ia)|🤖.*(generated|copilot|claude|gpt|gemini|deepseek)")
+
+        if [ -n "$coautor" ]; then
+            echo "" >&2
+            echo "BLOQUEADO: o push contem commit que credita um modelo de IA como autor." >&2
+            echo "  commit $commit" >&2
+            printf '%s\n' "$coautor" | sed 's/^/  -> /' >&2
+            echo "" >&2
+            echo "REGRA: autoria de commit e sempre humana — a lista de contribuidores" >&2
+            echo "do GitHub deve refletir pessoas, nao ferramentas." >&2
+            echo "Reescreva a mensagem (git rebase -i / git commit --amend) e envie de novo." >&2
             echo "" >&2
             exit 1
         fi

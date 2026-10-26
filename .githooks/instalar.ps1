@@ -9,14 +9,16 @@ try {
         git init
     }
     git config core.hooksPath .githooks
-    foreach ($gancho in "pre-commit", "pre-push") {
+    foreach ($gancho in "pre-commit", "commit-msg", "pre-push") {
         if (-not (Test-Path ".githooks\$gancho")) { throw "Gancho ausente: .githooks\$gancho" }
     }
     Write-Host ""
-    Write-Host "Protecao ativa nos dois momentos: commit e envio ao remoto."
-    Write-Host "  - no commit: arquivo .githooks\pre-commit"
-    Write-Host "  - no envio:  arquivo .githooks\pre-push"
-    Write-Host "Nenhum arquivo com valor de chave entra no git de jeito nenhum."
+    Write-Host "Protecao ativa em tres momentos: commit, mensagem e envio ao remoto."
+    Write-Host "  - no commit:    arquivo .githooks\pre-commit  (segredo e chave)"
+    Write-Host "  - na mensagem:  arquivo .githooks\commit-msg  (coautoria de IA)"
+    Write-Host "  - no envio:     arquivo .githooks\pre-push    (as duas regras de novo)"
+    Write-Host "Nenhum arquivo com valor de chave entra no git de jeito nenhum,"
+    Write-Host "e nenhum modelo de IA aparece como autor ou contribuidor."
 } finally {
     Pop-Location
 }
